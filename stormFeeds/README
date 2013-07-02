@@ -1,3 +1,6 @@
+Note: Still working on a build tool.  Been experimenting with leiningen but haven't gotten it to work yet.  So for now I included all the necessary libs manually.
+I'll try and fix when time permits.  Perhaps lein, mvn or something...not sure yet.
+
 This is project that hopefully touches on many features of Storm.
 
 The only requirements are java 6 or above.  This project uses Storm 0.8.2.
