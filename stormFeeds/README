@@ -1,0 +1,45 @@
+This is project that hopefully touches on many features of Storm.
+
+The only requirements are java 6 or above.  This project uses Storm 0.8.2.
+
+There are 2 topologies.
+
+First topology is a very straightword HelloTopology.  It consists of just HelloSpout and HelloCountBolt.
+You are encouraged to use this topology as a sanity check to make sure you can run topologies.  Another good exercise
+if you have storm cluster available is to deploy this topology and play with the "parallelism" and numTasks settings and
+see how they affect the number hellos and how they distributed among all the different languages.
+
+Second topology is  the CraigsListTopology.  It consists of CraigsListSpout, CraigsListFeedBolt and CraigsListTopNBolt.
+The CraigsListSpout and CraigsListFeedBolt design are from http://www.datasalt.com/2012/01/real-time-feed-processing-with-storm/ 
+
+However they have been modified so we can take the example a bit further and for it to work on version 0.8.2 of Storm.
+
+*CraigsListSpout maintains a rotating queue of all Craig's List feeds (one for each city). The reason for this is we want to poll each feed 
+in an even fashion.  As the spout pulls a feed from the queue, it will emit it to the CraigsListFeedBolt and add it back to the queue.
+
+*CraigsListFeedBolt takes a feed and parses it.  For this example, the city and listing title are emitted to various  CraigsListTopNBolt.
+
+*CraigsListTopNBolt takes a regex and a number, N.  So for example, it might parse out from the title the square footage of a Craig's List
+apartment listing.  CraigsListTopNBolt can be hooked up to the CraigsListFeedBolt or another CraigsListTopNBolt.  
+When it is hooked into  CraigsListFeedBolt, it will find the top N apts in terms of price broken down by city, e.g.:
+  tb.setBolt("CraigsListTopNPriceBolt", new CraigsListTopNBolt(5, "\\$[\\s]*([\\d]+)", "Top5PriceByCity"), 1).fieldsGrouping("CraigsListFeedBolt", new Fields("city"));
+Notice the fieldsGrouping insures all listings for a particular city will go to the same  "CraigsListTopNPriceBolt".
+When it is hooked into another CraigsListTopNBolt, we can use it to find the top N overall apartment prices:
+  tb.setBolt("CraigsListTopNBolt", new CraigsListTopNBolt(5, "\\$[\\s]*([\\d]+)", "Top5PriceOverall"), 1).globalGrouping("CraigsListTopNPriceBolt");
+Notice also the global grouping.  That is everything is emitted into the same bolt.
+
+If you examine the execute method of the CraigsListTopNBolt, you'll see it does various things:
+*print a report every X seconds by detecting a tick message.  This is configured in the topoolgy via: cfg.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS, 30);
+*will only emit if something is in the Top N.  Since if some listing is in the top N of a particular city, it cannot be top N overall.
+*duplicates are eliminated as we are able to maintain order of the listings using the streams.  Note that each bolt is run as a task and in its own thread.  So we don't need to worry
+about concurrency of the internal storage of our top N listings. 
+  
+Some possible exercises:
+1) Make a bolt to calculate top N best price/sqft for each city and overall.
+2) Calculate averages over certain stats.
+3) Explore using Trident to eliminate the need to maintain internal top N state which can be lost if the topology fails.
+4) Reuse this spout to access feeds from other sources like EBay, Wikipedia, etc.  Then write a custom feed bolt to parse those feeds.
+5) If you have access to a real Storm cluster, trying playing with storm configuration settings.
+6) Write a bolt to possibly persist/display the data realtime.  //This is a TODO for myself as well. 
+  
+
