@@ -4,10 +4,10 @@ require 'sass-globbing'
 project_type = :stand_alone
 
 # Publishing paths
-http_path = "/"
-http_images_path = "/images"
-http_fonts_path = "/fonts"
-css_dir = "public/stylesheets"
+http_path = "/storm-hackathon/"
+http_images_path = "/storm-hackathon/images"
+http_fonts_path = "/storm-hackathon/fonts"
+css_dir = "public/storm-hackathon/stylesheets"
 
 # Local development paths
 sass_dir = "sass"
