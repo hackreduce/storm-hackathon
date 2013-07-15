@@ -5,7 +5,7 @@ import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseBasicBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
+import org.apache.commons.codec.binary.Base64;
 import org.mortbay.xml.XmlParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,7 +62,7 @@ public class GnipEdcRequestBolt extends BaseBasicBolt {
     } catch (IOException e) {
       throw new GnipRequestException("Failed opening connection", e);
     }
-    String authorizationString = "Basic " + Base64.encode((gnipConnectionLogin + ":" + gnipConnectionPassword).getBytes());
+    String authorizationString = "Basic " + Base64.encodeBase64String((gnipConnectionLogin + ":" + gnipConnectionPassword).getBytes());
     uc.setRequestProperty("Authorization", authorizationString);
     InputStream in = null;
     try {
