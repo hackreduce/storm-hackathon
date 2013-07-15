@@ -1,4 +1,4 @@
-package org.hackreduce.storm.vmc.topoologies;
+package org.hackreduce.storm.vmc.topologies;
 
 import java.net.URL;
 import java.util.Map;
