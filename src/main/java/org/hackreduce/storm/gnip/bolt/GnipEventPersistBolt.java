@@ -1,4 +1,4 @@
-package org.meetup.storm.hackathon.bolt;
+package org.hackreduce.storm.gnip.bolt;
 
 
 import backtype.storm.topology.BasicOutputCollector;

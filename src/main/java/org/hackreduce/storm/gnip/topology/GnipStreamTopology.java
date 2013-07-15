@@ -1,11 +1,11 @@
-package org.meetup.storm.hackathon.topology;
+package org.hackreduce.storm.gnip.topology;
 
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
 import backtype.storm.topology.TopologyBuilder;
-import org.meetup.storm.hackathon.bolt.GnipEdcRequestBolt;
-import org.meetup.storm.hackathon.bolt.GnipEventPersistBolt;
-import org.meetup.storm.hackathon.bolt.GnipEventTransformBolt;
+import org.hackreduce.storm.gnip.bolt.GnipEdcRequestBolt;
+import org.hackreduce.storm.gnip.bolt.GnipEventPersistBolt;
+import org.hackreduce.storm.gnip.bolt.GnipEventTransformBolt;
 
 public class GnipStreamTopology {
 
