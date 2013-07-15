@@ -40,6 +40,9 @@ public class CraigsListFeedBolt extends BaseComponent implements IRichBolt
   @Override
   public void execute(Tuple input)
   {
+    // This bolt has no interest in tick tuples
+    if ("__tick".equals(input.getSourceStreamId())) return ;
+
     FeedFetcher feedFetcher = new HttpURLFeedFetcher();
     String feedUrl = input.getStringByField("feed");
     try
