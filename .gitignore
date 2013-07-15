@@ -1,6 +1,10 @@
 *.class
 *.log
 
+# Intellij-specific
+*.iws
+*.iml
+
 # sbt specific
 dist/*
 target/
