@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Storm Hackathon "
+title: "Storm Hackathon Getting Started"
 date: 2013-07-09 10:03
 comments: true
 sharing: true
@@ -43,6 +43,7 @@ footer: true
 
 *   [clojure](https://github.com/nathanmarz/storm/wiki/Clojure-DSL)
 *   [scala](https://github.com/velvia/ScalaStorm)
+    *   [tormenta](https://github.com/twitter/tormenta) - library for type safe kestrel/kafka spouts from twitter
 *   [ruby](https://github.com/colinsurprenant/redstorm)
 *   [python](https://github.com/AirSage/Petrel)
 *   [perl](https://github.com/gphat/io-storm)

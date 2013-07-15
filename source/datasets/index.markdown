@@ -12,7 +12,7 @@ Though you are welcome to use any dataset you'd like, we've made it a bit easier
 
 # [Gnip](http://gnip.com) Enterprise Data Collector
 
-*   APIs
+*   Gnip EDC supported sites
     *  bitly
     *  Dailymotion
     *  Delicious
@@ -29,12 +29,21 @@ Though you are welcome to use any dataset you'd like, we've made it a bit easier
     *  StackOverflow
     *  Vimeo
     *  Youtube
-*   [Full List of feeds available](http://support.gnip.com/customer/portal/articles/499176-feed-info)
+*   [Full list of feeds available](http://support.gnip.com/customer/portal/articles/499176-feed-info)
 *   [Example Gnip Project](https://github.com/hackreduce/storm-hackathon/tree/master/GnipEDCStream)
 
 # Real-time APIs
 
 *   [Real-time API Directory](http://blog.programmableweb.com/2012/04/17/62-real-time-apis-twitter-thrutu-and-pusher/)
 
-# Frequently updated RSS Feeds
+# Transit
+*   [Google Transit](https://developers.google.com/transit/community)
+*   [Google Transit Data Feeds](http://code.google.com/p/googletransitdatafeed/wiki/PublicFeeds)
+*   [MBTA](http://www.mbta.com/rider_tools/developers/default.asp?id=22393)
+
+# Financial
+*   [Yahoo Finance Feeds](http://finance.yahoo.com/news/rssindex/)
+
+# Miscellaneous
 *   [Craigslist Data Feeds](http://www.craigslist.org/about/rss)
+*   [USGS Earthquake Feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/)
