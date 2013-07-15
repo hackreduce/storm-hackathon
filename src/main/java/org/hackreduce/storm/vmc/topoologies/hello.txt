@@ -1,0 +1,79 @@
+Afrikaans	Hallo
+Albanian	MirÌÇdita
+AmharicSelam	Hello
+Arabic	Ahalan
+Armenian	Parev
+Azerbaijani	"Salam, Salam Ì_lÌ_ykÌ_m."
+Basque	Kaixo
+Bengali	Ei Je
+Bosnian	Zdravo
+Breton	"Demat, salud dit"
+Bulgarian	Zdravei/Zdrasti
+Cantonese	nei ho
+Catalan	Hola
+Cornish	Dydh da
+Creole	Alo
+Croatian	Bok
+Czech	"DobrÌ_ den, Ahoj"
+Dagaare	Fo be song?
+Danish	Goddag
+Dutch	"Goede dag, Hallo"
+English	Hello
+Esperanto	Saluton
+Estonian	Tere
+Eurish	"Salve, Salvete"
+Farsi	Sa'lam
+Finnish	Hei
+French	Bonjour
+Frisian	Goeie
+Galician	OlÌÁ
+Georgian	gamarjobat
+German	Guten Tag
+Greek	gia'sou
+Gujarati	hello
+Hawaiian	Aloha
+Hebrew	shalom
+Hindi	namaste
+Holooe	PÌ»ng-an
+Hungarian	JÌ_ napot
+Icelandic	"HallÌ_, GÌ_Ì¡an daginn"
+Ido	Bona jorno
+Indonesian	Halo
+Interlingua	Salute!
+Irish	Dia dhuit
+Italian	"Salve, Ciao"
+Japanese	Kon-nichiwa
+Korean	An-nyong Ha-se-yo
+Latin	"Salve, SalvÌÇte"
+Latvian	"Sveicina - ts, Sveiki"
+Lithuanian	Sveiki; Labas
+Luganda	Ki Kati
+Malaysian	helo
+Mandarin	Ni hao
+Marshallese	Iakwe (Yokwe)
+Norwegian	Hallo
+Occitan	"Adieu, adieussiatz ( formal )"
+Polish	Dzien dobry
+Europortuguese	OlÌÁ
+Portuguese	"OlÌÁ, Oi"
+Quecha	Allillanchu
+Romanian	BunÌ£ ziua
+Russian	Zdravstvuyte
+Serbian	Zdravo
+Sesotho	Helele
+Slovak	"Ahoj, Nazdar"
+Slovenian	Zxivjo
+Spanish	Hola
+Swahili	"Jambo, Hujambo"
+Swedish	Hej
+Tagalog	Kumusta
+Thai	sa-wat-dee
+Tswana	Dumela
+Turkish	merhaba; selam
+Ukrainian	vitayu
+Vietnamese	Xin chÌÊo
+Welsh	Hylo; Sut Mae?
+Wolof	[Hello]
+Xhosa	Molo
+Yiddish	sholem aleychem
+Zulu	sawubona
