@@ -7,6 +7,8 @@ import backtype.storm.generated.AlreadyAliveException;
 import backtype.storm.generated.InvalidTopologyException;
 import backtype.storm.generated.StormTopology;
 import backtype.storm.topology.TopologyBuilder;
+
+import org.hackreduce.storm.HackReduceStormSubmitter;
 import org.hackreduce.storm.gnip.bolt.GnipEdcRequestBolt;
 import org.hackreduce.storm.gnip.bolt.GnipEventPersistBolt;
 import org.hackreduce.storm.gnip.bolt.GnipEventTransformBolt;
@@ -34,7 +36,7 @@ public class GnipStreamTopology {
     if (cluster != null) {
       submitLocalTopology(cluster, "GNIP_EDC_Topology", conf, topology);
     } else {
-      StormSubmitter.submitTopology("GNIP_EDC_Topology", conf, topology);
+      HackReduceStormSubmitter.submitTopology("GNIP_EDC_Topology", conf, topology);
     }
   }
 
