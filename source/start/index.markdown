@@ -24,22 +24,27 @@ This will help you get started with Storm. At the end of this exercise, you shou
 
 Here, we'll clone your forked repository, build the example topologies and submit one to the Storm cluster.
 
+    export TEAM_NAME=<my-team-name>
     git clone https://github.com/<your github.com account>/storm-hackathon
     cd storm-hackathon
     mvn package
-    ./tools/submit hackreduce.storm.Example <my-team-name>
+    ./tools/submit org.hackreduce.storm.gnip.topology.GnipStreamTopology 
 
-If all of these commands were successful, you should now see your topology running in the [Storm UI](http://cluster-7-master.sl.hackreduce.net:8080). It should appear as <my-team-name>-example.
+If all of these commands were successful, you should now see your topology running in the [Storm UI](http://cluster-7-master.sl.hackreduce.net:8080). It should appear as ```<my-team-name>-GNIP_EDC_Topology```.
 
 You may now kill this example topology:
 
-    ./tools/kill <my-team-name>-example
+    ./tools/kill <my-team-name>-GNIP_EDC_Topology
+
+Note that if you don't specify a team name (through the ```TEAM_NAME``` environment variable), the helper code will pick one at random for you. Set the ```TEAM_NAME``` environment variable to get a constant prefix.
 
 ## Hack!
 
 Congradulations, you are now ready to create your own topologies and submit them in the same way: simply change the name of the main class when submitting.
 
 Other example topologies are available in your forked repository. You can start from one of those or from scratch.
+
+In order to submit a topology prefixed with your team's name, use the ```org.hackreduce.storm.HackReduceStormSubmitter``` utility class or simply make sure you name your topologies accordingly.
 
 # Resources
 
