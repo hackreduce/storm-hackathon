@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TOOLS_DIR=`dirname $0`
+TARGET_DIR=$TOOLS_DIR/../target
+JAR=storm-hackathon-1.0-SNAPSHOT-jar-with-dependencies.jar
+STORM_DIR=$TOOLS_DIR/storm
+STORM=$STORM_DIR/bin/storm
+
+$STORM jar $TARGET_DIR/$JAR $@
