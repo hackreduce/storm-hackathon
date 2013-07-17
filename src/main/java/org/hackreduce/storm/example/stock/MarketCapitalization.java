@@ -7,6 +7,7 @@ import backtype.storm.generated.InvalidTopologyException;
 import backtype.storm.spout.SchemeAsMultiScheme;
 import backtype.storm.tuple.Fields;
 import com.google.common.collect.ImmutableList;
+import org.hackreduce.storm.HackReduceStormSubmitter;
 import org.hackreduce.storm.example.common.Common;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import storm.trident.operation.CombinerAggregator;
 import storm.trident.operation.TridentCollector;
 import storm.trident.testing.MemoryMapState;
 import storm.trident.tuple.TridentTuple;
+import static org.hackreduce.storm.HackReduceStormSubmitter.teamPrefix;
 
 public class MarketCapitalization {
 
@@ -93,8 +95,6 @@ public class MarketCapitalization {
 
     public static void main(String[] args) throws AlreadyAliveException, InvalidTopologyException {
 
-        String teamName = args[0];
-
         Config config = new Config();
 
         TridentKafkaConfig spoutConfig = new TridentKafkaConfig(
@@ -107,7 +107,7 @@ public class MarketCapitalization {
         TridentTopology builder = new TridentTopology();
 
         builder
-            .newStream(teamName + "-lines", new TransactionalTridentKafkaSpout(spoutConfig))
+            .newStream(teamPrefix("lines"), new TransactionalTridentKafkaSpout(spoutConfig))
             .each(new Fields("str"), new ExtractStockData(), new Fields("symbol", "market_cap"))
             .groupBy(new Fields("symbol"))
             .persistentAggregate(
@@ -119,10 +119,6 @@ public class MarketCapitalization {
             .newValuesStream()
             .each(new Fields("symbol", "max_market_cap"), new LogInput(), new Fields("never_emits"));
 
-        StormSubmitter.submitTopology(
-            teamName + "-market-cap",
-            config,
-            builder.build()
-        );
+        HackReduceStormSubmitter.submitTopology("market-cap", config, builder.build());
     }
 }
