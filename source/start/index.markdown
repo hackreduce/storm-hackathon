@@ -9,10 +9,37 @@ footer: true
 
 # Getting Started
 
+This will help you get started with Storm. At the end of this exercise, you should be able to submit topologies to the Storm cluster.
+
 ## Prerequisites
 
-1.   [Setting up a Development Environment](https://github.com/nathanmarz/storm/wiki/Setting-up-development-environment)
-2.   [storm-starter](https://github.com/nathanmarz/storm-starter): Storm starter project, great for getting going
+1.   A sane shell ([Cygwin](http://www.cygwin.com/) may or may not work)
+1.   [git](http://git-scm.com/downloads)
+1.   A [JDK](http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html#jdk-6u45-oth-JPR)
+1.   [Maven](http://maven.apache.org/download.cgi)
+1.   A fork of the [storm-hackathon repo](https://github.com/hackreduce/storm-hackathon)
+1.   A team name (this will be used to partition your topologies and data from other teams)
+
+## Setting up your Environment 
+
+Here, we'll clone your forked repository, build the example topologies and submit one to the Storm cluster.
+
+    git clone https://github.com/<your github.com account>/storm-hackathon
+    cd storm-hackathon
+    mvn package
+    ./tools/submit hackreduce.storm.Example <my-team-name>
+
+If all of these commands were successful, you should now see your topology running in the [Storm UI](http://cluster-7-master.sl.hackreduce.net:8080). It should appear as <my-team-name>-example.
+
+You may now kill this example topology:
+
+    ./tools/kill <my-team-name>-example
+
+## Hack!
+
+Congradulations, you are now ready to create your own topologies and submit them in the same way: simply change the name of the main class when submitting.
+
+Other example topologies are available in your forked repository. You can start from one of those or from scratch.
 
 # Resources
 
@@ -22,12 +49,6 @@ footer: true
 
 *   [storm tutorial](https://github.com/nathanmarz/storm/wiki/Tutorial)
 *   [trident tutorial](https://github.com/nathanmarz/storm/wiki/Trident-tutorial)
-
-
-## Tools and Code
-
-### Deployment, etc.
-*    [storm-deploy](https://github.com/nathanmarz/storm-deploy): easy set up of EC2 clusters
 
 ### Spouts, Bolts, etc.
 
@@ -43,7 +64,7 @@ footer: true
 
 *   [clojure](https://github.com/nathanmarz/storm/wiki/Clojure-DSL)
 *   [scala](https://github.com/velvia/ScalaStorm)
-    *   [tormenta](https://github.com/twitter/tormenta) - library for type safe kestrel/kafka spouts from twitter
+*   [tormenta](https://github.com/twitter/tormenta) - library for type safe kestrel/kafka spouts from twitter
 *   [ruby](https://github.com/colinsurprenant/redstorm)
 *   [python](https://github.com/AirSage/Petrel)
 *   [perl](https://github.com/gphat/io-storm)
