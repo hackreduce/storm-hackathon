@@ -62,7 +62,7 @@ public class GnipEdcRequestBolt extends BaseBasicBolt {
     } catch (IOException e) {
       throw new GnipRequestException("Failed opening connection", e);
     }
-    String authorizationString = "Basic " + Base64.encodeBase64String((gnipConnectionLogin + ":" + gnipConnectionPassword).getBytes());
+    String authorizationString = "Basic " + Base64.encodeBase64String((gnipConnectionLogin + ":" + gnipConnectionPassword).getBytes()).replaceAll("[\r\n]", "");
     uc.setRequestProperty("Authorization", authorizationString);
     InputStream in = null;
     try {
