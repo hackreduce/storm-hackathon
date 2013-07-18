@@ -99,17 +99,25 @@ public class MarketCapitalization {
 
         Config config = new Config();
 
+        // The number of processes to spin up for this job
+        config.setNumWorkers(10);
+
         TridentKafkaConfig spoutConfig = new TridentKafkaConfig(
             Common.getKafkaHosts(),
-            "nyse"
+            "stock_daily_prices"
         );
 
         spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
+
+        // This tells the spout to start at the very beginning of the data stream
+        // If you just want to resume where you left off, remove this line
+        spoutConfig.forceStartOffsetTime(-2);
 
         TridentTopology builder = new TridentTopology();
 
         builder
             .newStream(teamPrefix("lines"), new TransactionalTridentKafkaSpout(spoutConfig))
+            .parallelismHint(6)
             .each(new Fields("str"), new ExtractStockData(), new Fields("exchange", "symbol", "market_cap"))
             .groupBy(new Fields("exchange", "symbol"))
             .persistentAggregate(

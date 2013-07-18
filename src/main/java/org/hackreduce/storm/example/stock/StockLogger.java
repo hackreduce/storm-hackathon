@@ -86,7 +86,7 @@ public class StockLogger {
 
         SpoutConfig spoutConfig = new SpoutConfig(
             Common.getKafkaHosts(),     // The locations of the kafka servers
-            "nyse",                     // The topic (queue) to consume
+            "stock_daily_prices",       // The topic (queue) to consume
             "/kafkastorm",              // The root location in zookeeper where progress is stored
             teamPrefix("stock-logger")  // A globally-unique name for this particular spout
         );
