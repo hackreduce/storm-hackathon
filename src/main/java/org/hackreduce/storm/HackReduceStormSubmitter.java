@@ -18,10 +18,14 @@ import backtype.storm.generated.StormTopology;
 public class HackReduceStormSubmitter {
 
     public static void submitTopology(String name, Map<?,?> conf, StormTopology topology) throws AlreadyAliveException, InvalidTopologyException {
-        StormSubmitter.submitTopology(String.format("%s-%s", teamName(), name), conf, topology);
+        StormSubmitter.submitTopology(teamPrefix(name), conf, topology);
     }
 
-    private static String teamName() {
+    public static String teamPrefix(String name) {
+        return String.format("%s-%s", teamName(), name);
+    }
+
+    public static String teamName() {
         String envTeamName = System.getenv("TEAM_NAME");
         String propTeamName = System.getProperty("TEAM_NAME", randomName());
 
@@ -41,13 +45,14 @@ public class HackReduceStormSubmitter {
     	try {
         	if(names.isEmpty()) {
         		names.addAll(
-        		  Lists.transform(
-        		    Resources.readLines(Resources.getResource(HackReduceStormSubmitter.class, "names.txt"), Charsets.UTF_8),
-        		    new Function<String, String>() {
-        		    	public String apply(String str) {
-        		    		return str.toLowerCase().trim();
-        		    	}
-        		    })
+        		    Lists.transform(
+        		        Resources.readLines(Resources.getResource(HackReduceStormSubmitter.class, "names.txt"), Charsets.UTF_8),
+        		        new Function<String, String>() {
+                            public String apply(String str) {
+                                return str.toLowerCase().trim();
+                            }
+                        }
+                    )
                 );
         	}
     	} catch(IOException e) {

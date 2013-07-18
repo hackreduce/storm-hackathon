@@ -1,0 +1,39 @@
+package org.hackreduce.storm.example.common;
+
+import backtype.storm.Config;
+import backtype.storm.utils.Utils;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import storm.kafka.HostPort;
+import storm.kafka.KafkaConfig;
+
+import java.util.List;
+import java.util.Map;
+
+public class Common {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Common.class);
+
+    public static KafkaConfig.BrokerHosts getKafkaHosts() {
+
+        Map config = Utils.readStormConfig();
+
+        List servers = (List) config.get(Config.STORM_ZOOKEEPER_SERVERS);
+        Integer port = (Integer) config.get(Config.STORM_ZOOKEEPER_PORT);
+
+        StringBuilder buff = new StringBuilder();
+        for (Object serverName : servers) {
+            buff.append(serverName);
+            buff.append(':');
+            buff.append(port);
+            buff.append(',');
+        }
+        String zkString = buff.substring(0, buff.length() - 1);
+
+        LOG.info("Pulled connection string from storm config: " + zkString);
+
+        return new KafkaConfig.ZkHosts(zkString, "/brokers");
+    }
+}
