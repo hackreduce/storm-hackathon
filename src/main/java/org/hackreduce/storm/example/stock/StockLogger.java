@@ -53,7 +53,7 @@ public class StockLogger {
             String[] components = tuple.getString(0).split(",");
 
             try {
-                String symbol = components[1];
+                String symbol = components[0] + ":" + components[1]; // eg. NYSE:GCH
 
                 if (stocksToWatch.isEmpty() || stocksToWatch.contains(symbol)) {
                     String date = components[2];

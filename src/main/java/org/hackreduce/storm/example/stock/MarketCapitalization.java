@@ -40,12 +40,13 @@ public class MarketCapitalization {
             String[] components = tuple.getString(0).split(",");
 
             try {
+                String exchange = components[0];
                 String symbol = components[1];
                 double volume = Double.parseDouble(components[6]);
                 double price = Double.parseDouble(components[7]);
 
                 collector.emit(
-                    ImmutableList.<Object>of(symbol, volume * price)
+                    ImmutableList.<Object>of(exchange, symbol, volume * price)
                 );
             } catch (IndexOutOfBoundsException ioobe) {
                 LOG.warn("Invalid input row", ioobe);
@@ -87,9 +88,10 @@ public class MarketCapitalization {
 
         @Override
         public void execute(TridentTuple objects, TridentCollector tridentCollector) {
-            String symbol = objects.getString(0);
-            Double maxMarketCap = objects.getDouble(1);
-            LOG.info("Largest seen market cap for {} is {}", symbol, maxMarketCap);
+            String exchange = objects.getString(0);
+            String symbol = objects.getString(1);
+            Double maxMarketCap = objects.getDouble(2);
+            LOG.info("Largest seen market cap for {}:{} is {}", new Object[]{ exchange, symbol, maxMarketCap});
         }
     }
 
@@ -108,8 +110,8 @@ public class MarketCapitalization {
 
         builder
             .newStream(teamPrefix("lines"), new TransactionalTridentKafkaSpout(spoutConfig))
-            .each(new Fields("str"), new ExtractStockData(), new Fields("symbol", "market_cap"))
-            .groupBy(new Fields("symbol"))
+            .each(new Fields("str"), new ExtractStockData(), new Fields("exchange", "symbol", "market_cap"))
+            .groupBy(new Fields("exchange", "symbol"))
             .persistentAggregate(
                 new MemoryMapState.Factory(),
                 new Fields("market_cap"),
@@ -117,7 +119,7 @@ public class MarketCapitalization {
                 new Fields("max_market_cap")
             )
             .newValuesStream()
-            .each(new Fields("symbol", "max_market_cap"), new LogInput(), new Fields("never_emits"));
+            .each(new Fields("exchange", "symbol", "max_market_cap"), new LogInput(), new Fields("never_emits"));
 
         HackReduceStormSubmitter.submitTopology("market-cap", config, builder.build());
     }
