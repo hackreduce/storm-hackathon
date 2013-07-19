@@ -58,8 +58,12 @@ If you would like to run a mini Storm cluster in a [Vagrant](http://www.vagrantu
     ```
 4.   Add the following line to your Vagrantfile
     ```
-      config.vm.network :hostonly, ip: "192.168.33.10"
+      config.vm.network :hostonly, ip: "192.168.101.11"
     ```
+5.   Start VM
+    ``` vagrant up
+    ```
+6.   open storm ui http://192.168.101.11:8082
 
 
 The vagrant box was built with the following software versions:
