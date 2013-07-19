@@ -53,16 +53,17 @@ If you would like to run a mini Storm cluster in a [Vagrant](http://www.vagrantu
 1.   [Install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2.   [Install Vagrant](http://docs.vagrantup.com/v2/installation/)
 3.   Initialize Vagrant project (this will create a _Vagrantfile_)
-    ```
+    {% highlight sh %} 
     vagrant init storm https://dl.dropboxusercontent.com/u/2759041/Storm/stormvm.box
-    ```
+    {% endhighlight %}
 4.   Add the following line to your Vagrantfile
-    ```
+    {% highlight ruby %} 
       config.vm.network :hostonly, ip: "192.168.101.11"
-    ```
+    {% endhighlight %}
 5.   Start VM
-    ``` vagrant up
-    ```
+    {% highlight sh %} 
+    vagrant up
+    {% endhighlight %}
 6.   open storm ui http://192.168.101.11:8082
 
 
