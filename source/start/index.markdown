@@ -28,13 +28,13 @@ Here, we'll clone your forked repository, build the example topologies and submi
     git clone https://github.com/<your github.com account>/storm-hackathon
     cd storm-hackathon
     mvn package
-    ./tools/submit org.hackreduce.storm.gnip.topology.GnipStreamTopology 
+    ./tools/submit org.hackreduce.storm.example.ExclamationTopology cluster 
 
-If all of these commands were successful, you should now see your topology running in the [Storm UI](http://cluster-7-master.sl.hackreduce.net:8080). It should appear as ```<my-team-name>-GNIP_EDC_Topology```.
+If all of these commands were successful, you should now see your topology running in the [Storm UI](http://cluster-7-master.sl.hackreduce.net:8080). It should appear as ```<my-team-name>-Exclaim```.
 
 You may now kill this example topology:
 
-    ./tools/kill <my-team-name>-GNIP_EDC_Topology
+    ./tools/kill <my-team-name>-Exclaim
 
 Note that if you don't specify a team name (through the ```TEAM_NAME``` environment variable), the helper code will pick one at random for you. Set the ```TEAM_NAME``` environment variable to get a constant prefix.
 
