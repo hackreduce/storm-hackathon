@@ -11,3 +11,7 @@ source/_stash
 source/stylesheets/screen.css
 vendor
 node_modules
+.project
+.classpath
+target/
+.settings/
