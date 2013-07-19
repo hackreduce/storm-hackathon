@@ -10,27 +10,38 @@ footer: true
 Though you are welcome to use any dataset you'd like, we've made it a bit easier to use a few.
 
 
-# [Gnip](http://gnip.com) Enterprise Data Collector
+# Gnip
 
-*   Gnip EDC supported sites
+[Gnip](http://gnip.com) is the world's largest and most trusted provider of social media data, serving customers in a range of industries. Gnip's customers deliver social media analytics to over 90% of the Fortune 500. Gnip delivers more than 100 billion realtime social data activities each month, providing access to data from dozens of sources including Twitter, Facebook, etc. 
+
+
+*  Gnip enterprise data collector supported sites
     *  bitly
     *  Dailymotion
     *  Delicious
-    *  Facebook
+    *  Facebook (keyword search)
     *  Flickr
     *  Google+
-    *  Identi.ca
     *  Instagram
-    *  MetaCafe
-    *  Panoramio
     *  Photobucket
-    *  Plurk
     *  Reddit
     *  StackOverflow
     *  Vimeo
     *  Youtube
+    *  etc.
 *   [Full list of feeds available](http://support.gnip.com/customer/portal/articles/499176-feed-info)
 *   [Example Gnip Project](https://github.com/hackreduce/storm-hackathon/tree/master/GnipEDCStream)
+
+# Semantria
+
+Implement text/sentiment analysis into your project using [Semantria's](semantria.com/register) REST API. Simply register at http://semantria.com/register and let them know if you will be processing more than 10,000 documents.
+
+*   All hackers will have unlimited transactions during the Hackathon (1 transaction to process 1 document), and will receive a free 100k transactions after the Hackathon.
+*   For SDK’s & additional information, check out the developer page at http://semantria.com/developer
+*   For support please use our live chat on our website, our CTO/head developer will be answering all technical questions.
+
+# Static data sets
+*   [hack/reduce dataset collection](https://github.com/hackreduce/Hackathon/tree/master/datasets)
 
 # Real-time APIs
 
