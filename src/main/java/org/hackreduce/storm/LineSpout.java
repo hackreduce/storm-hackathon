@@ -26,6 +26,12 @@ public class LineSpout extends BaseRichSpout {
     linesRead = new AtomicLong(0);
   }
 
+  /**
+   * Prepare the spout. This method is called once when the topology is submitted
+   * @param conf
+   * @param context
+   * @param collector
+   */
   @Override
   public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {
     _collector = collector;
@@ -37,6 +43,9 @@ public class LineSpout extends BaseRichSpout {
     }
   }
 
+  /**
+   * Storm will call this method repeatedly to pull tuples from the spout
+   */
   @Override
   public void nextTuple() {
     try {
@@ -51,15 +60,27 @@ public class LineSpout extends BaseRichSpout {
     }
   }
 
+  /**
+   * Storm will call this method when tuples are acked
+   * @param id
+   */
   @Override
   public void ack(Object id) {
   }
 
+  /**
+   * Storm will call this method when tuples fail to process downstream
+   * @param id
+   */
   @Override
   public void fail(Object id) {
     System.err.println("Failed line number " + id);
   }
 
+  /**
+   * Tell storm which fields are emitted by the spout
+   * @param declarer
+   */
   @Override
   public void declareOutputFields(OutputFieldsDeclarer declarer) {
     // read csv header to get field info
