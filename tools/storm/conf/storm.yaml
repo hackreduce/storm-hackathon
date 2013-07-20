@@ -20,9 +20,8 @@ nimbus.thrift.port: 8745
 #     - org.mycompany.MyDecorator
 #
 ## Locations of the drpc servers
-# drpc.servers:
-#     - "server1"
-#     - "server2"
+drpc.servers:
+    - "cluster-7-master.sl.hackreduce.net"
 
 ## Metrics Consumers
 # topology.metrics.consumer.register:
