@@ -2,6 +2,13 @@ package org.hackreduce.storm.example.common;
 
 import backtype.storm.Config;
 import backtype.storm.utils.Utils;
+import com.basho.riak.client.IRiakClient;
+import com.basho.riak.client.RiakException;
+import com.basho.riak.client.RiakFactory;
+import com.basho.riak.client.raw.RiakClientFactory;
+import com.basho.riak.client.raw.http.HTTPClientConfig;
+import com.basho.riak.client.raw.http.HTTPClusterConfig;
+import com.basho.riak.client.raw.http.HTTPRiakClientFactory;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import org.slf4j.Logger;
@@ -36,4 +43,18 @@ public class Common {
 
         return new KafkaConfig.ZkHosts(zkString, "/brokers");
     }
+
+    /**
+     * TODO: Load from config...
+     */
+    public static List<String> getRiakHosts() {
+        return ImmutableList.of(
+            "cluster-7-slave-00.sl.hackreduce.net",
+            "cluster-7-slave-02.sl.hackreduce.net",
+            "cluster-7-slave-03.sl.hackreduce.net",
+            "cluster-7-slave-06.sl.hackreduce.net"
+        );
+    }
+
+    public static int getRiakPort() { return 8087; }
 }
