@@ -21,20 +21,6 @@
       <id>twitter4j</id>
       <url>http://twitter4j.org/maven2</url>
     </repository>
-    <!--<repository>-->
-      <!--<id>scala-tools</id>-->
-      <!--<url>http://scala-tools.org/repo-releases</url>-->
-      <!--<snapshots>-->
-        <!--<enabled>true</enabled>-->
-      <!--</snapshots>-->
-      <!--<releases>-->
-        <!--<enabled>true</enabled>-->
-      <!--</releases>-->
-    <!--</repository>-->
-    <!--<repository>-->
-      <!--<id>twitter-twttr</id>-->
-      <!--<url>http://maven.twttr.com/</url>-->
-    <!--</repository>-->
   </repositories>
 
   <dependencies>
@@ -100,10 +86,16 @@
 		</dependency>
 	</dependencies>
 
+
+
   <build>
     <resources>
   			<resource>
   				<directory>${basedir}/multilang</directory>
+  			</resource>
+  			<resource>
+  				<directory>src/main/resources</directory>
+          <targetPath>${project.build.outputDirectory}</targetPath>
   			</resource>
   		</resources>
     <plugins>
