@@ -4,6 +4,7 @@
 #     - "server2"
 # 
 nimbus.host: "cluster-7-master.sl.hackreduce.net"
+nimbus.thrift.port: 8745
 # 
 # 
 # ##### These may optionally be filled in:
