@@ -65,6 +65,12 @@ If you would like to run a mini Storm cluster in a [Vagrant](http://www.vagrantu
     vagrant up
     {% endhighlight %}
 6.   open storm ui http://192.168.101.11:8082
+7.   configure storm submitter to point to the local cluster
+    {% highlight sh %}
+    mkdir -p ~/.storm
+    echo 'nimbus.host: "192.168.101.11"' > ~/.storm/storm.yaml
+    {% endhighlight %}
+    *    to point back to the softlayer cluster, change ```nimbus.host``` to ```cluster-7-master.sl.hackreduce.net``` 
 
 
 The vagrant box was built with the following software versions:

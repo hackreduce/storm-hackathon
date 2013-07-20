@@ -30,7 +30,7 @@ Though you are welcome to use any dataset you'd like, we've made it a bit easier
     *  Youtube
     *  etc.
 *   [Full list of feeds available](http://support.gnip.com/customer/portal/articles/499176-feed-info)
-*   [Example Gnip Project](https://github.com/hackreduce/storm-hackathon/tree/master/GnipEDCStream)
+*   [Example Gnip Project](https://github.com/hackreduce/storm-hackathon/tree/master/src/main/java/org/hackreduce/storm/gnip)
 
 # Semantria
 
