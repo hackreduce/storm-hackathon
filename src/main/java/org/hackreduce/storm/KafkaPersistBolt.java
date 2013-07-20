@@ -19,24 +19,27 @@ public class KafkaPersistBolt extends BaseRichBolt {
   private static final Logger LOG = LoggerFactory.getLogger(KafkaPersistBolt.class);
   private Producer<String,String> producer;
   private String topicName;
+  private OutputCollector outputCollector;
 
 
   @Override
-  public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
+  public void prepare(Map conf, TopologyContext topologyContext, OutputCollector outputCollector) {
     Properties props = new Properties();
-    props.put("zk.connect", "127.0.0.1:2181");
+    props.put("zk.connect", "cluster-7-slave-04.sl.hackreduce.net:2181,cluster-7-slave-02.sl.hackreduce.net:2181,cluster-7-slave-01.sl.hackreduce.net:2181");
+//    props.put("zk.connect", "127.0.0.1:2181");
     props.put("serializer.class", "kafka.serializer.StringEncoder");
     ProducerConfig config = new ProducerConfig(props);
     producer = new Producer<String, String>(config);
-    topicName = "test-topic";
+    topicName = (String) conf.get("persist.topic");
+    this.outputCollector=outputCollector;
   }
 
   @Override
   public void execute(Tuple tuple) {
-    LOG.info(tuple.getStringByField("msg"));
-    ProducerData<String, String> data = new ProducerData<String, String>(topicName, tuple.getStringByField("msg"));
+    LOG.info(tuple.getStringByField("line"));
+    ProducerData<String, String> data = new ProducerData<String, String>(topicName, tuple.getStringByField("line"));
     producer.send(data);
-
+    outputCollector.ack(tuple);
 
   }
 
