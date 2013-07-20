@@ -10,6 +10,7 @@ footer: true
 *   [Getting Started](/start/)
 *   [Datasets and APIs](/datasets/)
 *   [Cluster info](/cluster/)
+*   [Hopper's Finagle Services](/finagle/)
 
 # Sponsors
 
