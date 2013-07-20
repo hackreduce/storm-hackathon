@@ -22,17 +22,22 @@ import java.util.Map;
 public class FilePersistBolt extends BaseRichBolt {
   private static final Logger LOG = LoggerFactory.getLogger(FilePersistBolt.class);
   private BufferedWriter writer;
+  private OutputCollector outputCollector;
+
 
   @Override
   public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
     String filepath = (String) map.get("persist.file");
     String absoluteFileName = filepath+"."+topologyContext.getThisTaskIndex();
+    this.outputCollector=outputCollector;
+
     try {
       writer = new BufferedWriter(new FileWriter(absoluteFileName));
     } catch (IOException e) {
       // this will propagate the error to storm
       throw new RuntimeException("Problem opening file " +absoluteFileName,e);
     }
+
   }
 
   @Override
@@ -42,7 +47,9 @@ public class FilePersistBolt extends BaseRichBolt {
     try {
       writer.write(line);
       writer.flush();
+      outputCollector.ack(tuple);
     } catch (IOException e) {
+      outputCollector.fail(tuple);
       throw new RuntimeException("Problem writing to file",e);
     }
   }
