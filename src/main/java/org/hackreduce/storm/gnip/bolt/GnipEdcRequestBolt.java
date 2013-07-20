@@ -1,5 +1,6 @@
 package org.hackreduce.storm.gnip.bolt;
 
+import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseBasicBolt;
@@ -19,25 +20,39 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class GnipEdcRequestBolt extends BaseBasicBolt {
   private static Logger LOG = LoggerFactory.getLogger(GnipEdcRequestBolt.class);
-  private String gnipConnectionUrl;
-  private String gnipConnectionLogin;
-  private String gnipConnectionPassword;
+  private final String gnipConnectionUrl;
+  private final String gnipConnectionLogin;
+  private final String gnipConnectionPassword;
+  private final String gnipEventsStreamName;
+  private final String gnipEventFieldName;
   private String refreshUrl;
+  private String componentId;
 
-  public GnipEdcRequestBolt(String gnipConnectionUrl, String gnipConnectionLogin, String gnipConnectionPassword) {
+  public GnipEdcRequestBolt(String gnipConnectionUrl, String gnipConnectionLogin, String gnipConnectionPassword,
+                            String gnipEventsStreamName, String gnipEventFieldName) {
     this.gnipConnectionUrl = gnipConnectionUrl;
     this.gnipConnectionLogin = gnipConnectionLogin;
     this.gnipConnectionPassword = gnipConnectionPassword;
+    this.gnipEventsStreamName = gnipEventsStreamName;
+    this.gnipEventFieldName = gnipEventFieldName;
+  }
+
+  @Override
+  public void prepare(Map map, TopologyContext topologyContext) {
+    super.prepare(map, topologyContext);
+    componentId = topologyContext.getThisComponentId();
   }
 
   @Override
   public void execute(Tuple tuple, BasicOutputCollector basicOutputCollector) {
     try {
       for (XmlParser.Node event : requestGnipData()) {
-        basicOutputCollector.emit("gnip_events", Arrays.asList((Object) event));
+        String strEvent = event.toString();
+        basicOutputCollector.emit(gnipEventsStreamName, Arrays.asList((Object) strEvent));
       }
     } catch (GnipRequestException e) {
       LOG.error("GNIP Request Failed", e);
@@ -46,7 +61,7 @@ public class GnipEdcRequestBolt extends BaseBasicBolt {
 
   @Override
   public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
-    outputFieldsDeclarer.declareStream("gnip_events", new Fields("gnip_event"));
+    outputFieldsDeclarer.declareStream(gnipEventsStreamName, new Fields(gnipEventFieldName));
   }
 
   private List<XmlParser.Node> requestGnipData() throws GnipRequestException {
@@ -89,6 +104,7 @@ public class GnipEdcRequestBolt extends BaseBasicBolt {
           result.add(node);
         }
       }
+      LOG.info("{} completed request", componentId);
       return result;
     } finally {
       if (in != null) {

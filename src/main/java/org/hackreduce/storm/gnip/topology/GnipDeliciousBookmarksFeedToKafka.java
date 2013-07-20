@@ -7,48 +7,44 @@ import backtype.storm.generated.InvalidTopologyException;
 import backtype.storm.generated.StormTopology;
 import backtype.storm.topology.TopologyBuilder;
 import org.hackreduce.storm.HackReduceStormSubmitter;
+import org.hackreduce.storm.KafkaPersistBolt;
 import org.hackreduce.storm.gnip.bolt.GnipEdcRequestBolt;
-import org.hackreduce.storm.gnip.bolt.GnipEventPersistBolt;
-import org.hackreduce.storm.gnip.bolt.GnipEventTransformBolt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GnipStreamTopology {
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
-  private static final String TOPOLOGY_NAME = "GNIP_EDC_Topology";
-  private static Logger LOG = LoggerFactory.getLogger(GnipStreamTopology.class);
+public class GnipDeliciousBookmarksFeedToKafka {
+  private static final String TOPOLOGY_NAME = "GNIP_Delicious_Bookmarks_Topology";
+  private static Logger LOG = LoggerFactory.getLogger(GnipDeliciousBookmarksFeedToKafka.class);
 
-  public static void submitTopology(LocalCluster cluster, String topoName) throws InterruptedException, AlreadyAliveException, InvalidTopologyException {
-    GnipEdcRequestBolt gnipEdcYoutubeRequestBolt = null;
-    gnipEdcYoutubeRequestBolt = new GnipEdcRequestBolt(
-        "https://bostonstorm.gnip.com/data_collectors/1/activities.xml",
-        "xxx",
-        "xxx",
+  public static void submitTopology(LocalCluster cluster, String topoName) throws InterruptedException, AlreadyAliveException, InvalidTopologyException, IOException {
+    Properties prop = new Properties();
+    InputStream in = GnipDeliciousBookmarksFeedToKafka.class.getResourceAsStream("gnip.properties");
+    prop.load(in);
+    in.close();
+
+    GnipEdcRequestBolt gnipRequestBolt = new GnipEdcRequestBolt(
+        "https://bostonstorm.gnip.com/data_collectors/10/activities.xml",
+        prop.getProperty("gnip_login"),
+        prop.getProperty("gnip_password"),
         "gnip_events",
-        "gnip_event"
-    );
-
-    GnipEdcRequestBolt gnipEdcTwitterRequestBolt = null;
-    gnipEdcTwitterRequestBolt = new GnipEdcRequestBolt(
-        "https://bostonstorm.gnip.com/data_collectors/9/activities.xml",
-        "xxx",
-        "xxx",
-        "gnip_events",
-        "gnip_event"
+        "line"
     );
 
     Config tickConfig = new Config();
     tickConfig.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS, 1);
 
     TopologyBuilder builder = new TopologyBuilder();
-    builder.setBolt("gnip_in_yt", gnipEdcYoutubeRequestBolt, 1).addConfigurations(tickConfig);
-    builder.setBolt("gnip_in_tw", gnipEdcTwitterRequestBolt, 1).addConfigurations(tickConfig);
-    builder.setBolt("gnip_transform", new GnipEventTransformBolt(), 2)
-        .localOrShuffleGrouping("gnip_in_yt", "gnip_events")
+    builder.setBolt("gnip_in_delic_bm", gnipRequestBolt, 1).addConfigurations(tickConfig);
+    builder.setBolt("gnip_transform", new KafkaPersistBolt(), 1)
         .localOrShuffleGrouping("gnip_in_tw", "gnip_events");
-    builder.setBolt("gnip_persist", new GnipEventPersistBolt(), 3).localOrShuffleGrouping("gnip_transform", "msgs");
 
     Config conf = new Config();
+    conf.put("persist.topic", "delicious_bookmarks");
+
     StormTopology topology = builder.createTopology();
     if (cluster != null) {
       submitLocalTopology(cluster, topoName, conf, topology);
@@ -69,14 +65,16 @@ public class GnipStreamTopology {
 
   public static void main(String[] args) {
     try {
-      LOG.info("Starting");
+      LOG.info("Starting {}", TOPOLOGY_NAME);
       //if there is any command-line parameter - will run local cluster
-      GnipStreamTopology.submitTopology(((args != null && args.length > 0)) ? new LocalCluster() : null, TOPOLOGY_NAME);
+      GnipDeliciousBookmarksFeedToKafka.submitTopology(((args != null && args.length > 0)) ? new LocalCluster() : null, TOPOLOGY_NAME);
     } catch (InterruptedException e) {
       LOG.error("Failed", e);
     } catch (AlreadyAliveException e) {
       LOG.error("Failed", e);
     } catch (InvalidTopologyException e) {
+      LOG.error("Failed", e);
+    } catch (IOException e) {
       LOG.error("Failed", e);
     }
   }
