@@ -27,6 +27,7 @@ Riak is available on the following nodes on port:
 MySQL is available on cluster-7-slave-08.sl.hackreduce.net:3306
 
 username: hackreduce
+
 password: codebigorgohome
 
 Please prefix your database name with your team's name.

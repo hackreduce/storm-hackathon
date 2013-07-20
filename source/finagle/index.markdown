@@ -19,7 +19,7 @@ Hopper is offerring 3 thrift-based Finagle RPC services:
 
 Each service has its own ```.thrift``` file that contains its interface definition.
 
-* [Geocoder](/finagle/geocoder.thift)
+* [Geocoder](/finagle/geocoder.thrift)
 * [SpideBunny](/finagle/spiderbunny.thrift)
 * [HCache](/finagle/hcache.thrift)
 
@@ -27,8 +27,8 @@ Each service has its own ```.thrift``` file that contains its interface definiti
 
 Use the thrift compiler of your choice to get the bindings for the language you are using (Java, Scala, Ruby, etc.)
 
-* Scrooge: compiles to scala-idiomatic classes
-*
+* [Thrift](http://thrift.apache.org/) the original thrift compiler. Supports all common languages.
+* [Scrooge](https://github.com/twitter/scrooge): compiles to scala-idiomatic classes
 
 ## Use it
 
@@ -38,13 +38,14 @@ Service endpoints are as follows:
 * SpiderBunny: ```cluster-7-slave-07.sl.hackreduce.net:5656```
 * HCache: ```cluster-7-slave-03.sl.hackreduce.net:9098```
 
+```scala
+    import com.twitter.finagle._
+    import com.hopper.spiderbunny._
 
-   import com.twitter.finagle._
-   import com.hopper.spiderbunny._
+    val sb = Thrift.newIface[SpiderBunny.FutureIface]("cluster-7-slave-07.sl.hackreduce.net:5656```
 
-   val sb = Thrift.newIface[SpiderBunny.FutureIface]("cluster-7-slave-07.sl.hackreduce.net:5656```
-
-   sb.fetch("http://www.hackreduce.org")
-     .map { response =>
-       println("Content type is: " + response.headers("Content-Type"))
-     }
+    sb.fetch("http://www.hackreduce.org")
+      .map { response =>
+        println("Content type is: " + response.headers("Content-Type"))
+      }
+```
