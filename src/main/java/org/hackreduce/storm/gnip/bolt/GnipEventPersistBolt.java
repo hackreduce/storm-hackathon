@@ -14,6 +14,7 @@ public class GnipEventPersistBolt extends BaseBasicBolt {
   @Override
   public void execute(Tuple tuple, BasicOutputCollector basicOutputCollector) {
     LOG.info(tuple.getStringByField("msg"));
+
   }
 
   @Override

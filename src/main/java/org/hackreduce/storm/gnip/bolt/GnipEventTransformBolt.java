@@ -14,7 +14,13 @@ public class GnipEventTransformBolt extends BaseBasicBolt {
   public void execute(Tuple tuple, BasicOutputCollector basicOutputCollector) {
     XmlParser.Node node = (XmlParser.Node) tuple.getValueByField("gnip_event");
     String title = node.getString("title", false, false);
-    String href = node.get("link").getAttribute("href");
+    XmlParser.Node link = node.get("link");
+    String href = "couldn't extract href";
+    if (link == null) {
+      href = "???";
+    } else {
+      href = link.getAttribute("href");
+    }
     basicOutputCollector.emit("msgs", Arrays.asList((Object) (title + " ---> " + href)));
   }
 
