@@ -18,9 +18,15 @@ To deploy and demo your topology with production data, you can use the Hopper So
 
 ## Riak Nodes
 
-Riak is available on the following nodes on port:
+[Riak](http://basho.com/riak) is available on the following nodes on port:
 
 * cluster-7-slave-(00,02,03,06).sl.hackreduce.net:8098
+
+## Redis Node
+
+[Redi](http://redis.io)s is available on its default port on :
+
+* cluster-7-slave-26.sl.hackreduce.net
 
 ## MySQL
 
