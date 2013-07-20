@@ -51,7 +51,8 @@ public class GnipEdcRequestBolt extends BaseBasicBolt {
   public void execute(Tuple tuple, BasicOutputCollector basicOutputCollector) {
     try {
       for (XmlParser.Node event : requestGnipData()) {
-        basicOutputCollector.emit(gnipEventsStreamName, Arrays.asList((Object) event));
+        String strEvent = event.toString();
+        basicOutputCollector.emit(gnipEventsStreamName, Arrays.asList((Object) strEvent));
       }
     } catch (GnipRequestException e) {
       LOG.error("GNIP Request Failed", e);

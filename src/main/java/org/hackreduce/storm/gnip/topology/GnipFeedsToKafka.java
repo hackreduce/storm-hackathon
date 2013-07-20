@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 public class GnipFeedsToKafka {
 
-  private static final String TOPOLOGY_NAME = "GNIP_EDC_Topology";
+  private static final String TOPOLOGY_NAME = "GNIP_EDC_To_Kafka_Topology";
   private static Logger LOG = LoggerFactory.getLogger(GnipFeedsToKafka.class);
 
   public static void submitTopology(LocalCluster cluster, String topoName) throws InterruptedException, AlreadyAliveException, InvalidTopologyException {
@@ -71,7 +71,7 @@ public class GnipFeedsToKafka {
     try {
       System.out.println("Starting");
       //if there is any command-line parameter - will run local cluster
-      GnipStreamTopology.submitTopology(((args != null && args.length > 0)) ? new LocalCluster() : null, TOPOLOGY_NAME);
+      GnipFeedsToKafka.submitTopology(((args != null && args.length > 0)) ? new LocalCluster() : null, TOPOLOGY_NAME);
     } catch (InterruptedException e) {
       LOG.error("Failed", e);
     } catch (AlreadyAliveException e) {
