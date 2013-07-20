@@ -30,7 +30,7 @@ Here, we'll clone your forked repository, build the example topologies and submi
     mvn package
     ./tools/submit org.hackreduce.storm.example.ExclamationTopology cluster 
 
-If all of these commands were successful, you should now see your topology running in the [Storm UI](http://cluster-7-master.sl.hackreduce.net:8080). It should appear as ```<my-team-name>-Exclaim```.
+If all of these commands were successful, you should now see your topology running in the [Storm UI](http://cluster-7-master.sl.hackreduce.net:5698). It should appear as ```<my-team-name>-Exclaim```. 
 
 You may now kill this example topology:
 
@@ -58,7 +58,7 @@ If you would like to run a mini Storm cluster in a [Vagrant](http://www.vagrantu
     {% endhighlight %}
 4.   Add the following line to your Vagrantfile
     {% highlight ruby %} 
-      config.vm.network :hostonly, ip: "192.168.101.11"
+      config.vm.network :private_network, ip: "192.168.101.11"
     {% endhighlight %}
 5.   Start VM
     {% highlight sh %} 

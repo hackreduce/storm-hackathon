@@ -32,6 +32,14 @@ password: codebigorgohome
 
 Please prefix your database name with your team's name.
 
+## Kafka
+
+use the [Storm Kafka Spout](https://github.com/nathanmarz/storm-contrib/tree/master/storm-kafka)
+
+Zookeeper connect String to use kafka:
+
+```cluster-7-slave-04.sl.hackreduce.net:2181,cluster-7-slave-02.sl.hackreduce.net:2181,cluster-7-slave-01.sl.hackreduce.net:2181```
+
 ## Hopper Finagle Services
 
 Finagle services are described [here](/finagle/)

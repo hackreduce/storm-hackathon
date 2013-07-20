@@ -17,19 +17,17 @@ Though you are welcome to use any dataset you'd like, we've made it a bit easier
 
 *  Gnip enterprise data collector supported sites
     *  bitly
-    *  Dailymotion
     *  Delicious
-    *  Facebook (keyword search)
     *  Flickr
     *  Google+
     *  Instagram
-    *  Photobucket
     *  Reddit
     *  StackOverflow
     *  Vimeo
     *  Youtube
     *  etc.
 *   [Full list of feeds available](http://support.gnip.com/customer/portal/articles/499176-feed-info)
+*   [Details working with Gnip](/gnip/)
 *   [Example Gnip Project](https://github.com/hackreduce/storm-hackathon/tree/master/src/main/java/org/hackreduce/storm/gnip)
 
 # Semantria
