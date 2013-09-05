@@ -5,6 +5,11 @@
 *.iws
 *.iml
 
+# Eclipse
+.classpath
+.project
+.settings/
+
 # sbt specific
 dist/*
 target/

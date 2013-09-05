@@ -1,8 +1,8 @@
 ########### These MUST be filled in for a storm configuration
 storm.zookeeper.servers:
   - "cluster-7-slave-01.sl.hackreduce.net"
-  - "cluster-7-slave-04.sl.hackreduce.net"
   - "cluster-7-slave-02.sl.hackreduce.net"
+  - "cluster-7-slave-03.sl.hackreduce.net"
 
 nimbus.host: "cluster-7-master.sl.hackreduce.net"
 nimbus.thrift.port: 8745

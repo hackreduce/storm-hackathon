@@ -37,8 +37,7 @@ public class Common {
             buff.append(port);
             buff.append(',');
         }
-//        String zkString = buff.substring(0, buff.length() - 1);
-        String zkString="cluster-7-slave-04.sl.hackreduce.net:2181,cluster-7-slave-02.sl.hackreduce.net:2181,cluster-7-slave-01.sl.hackreduce.net:2181";
+        String zkString = buff.substring(0, buff.length() - 1);
 
         LOG.info("Pulled connection string from storm config: " + zkString);
 
@@ -50,10 +49,10 @@ public class Common {
      */
     public static List<String> getRiakHosts() {
         return ImmutableList.of(
-            "cluster-7-slave-00.sl.hackreduce.net",
-            "cluster-7-slave-02.sl.hackreduce.net",
-            "cluster-7-slave-03.sl.hackreduce.net",
-            "cluster-7-slave-06.sl.hackreduce.net"
+            "cluster-7-slave-04.sl.hackreduce.net",
+            "cluster-7-slave-05.sl.hackreduce.net",
+            "cluster-7-slave-06.sl.hackreduce.net",
+            "cluster-7-slave-07.sl.hackreduce.net"
         );
     }
 
