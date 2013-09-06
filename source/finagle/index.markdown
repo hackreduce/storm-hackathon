@@ -34,15 +34,15 @@ Use the thrift compiler of your choice to get the bindings for the language you 
 
 Service endpoints are as follows:
 
-* Geocoder: ```cluster-7-slave-06.sl.hackreduce.net:5874```
-* SpiderBunny: ```cluster-7-slave-07.sl.hackreduce.net:5656```
-* HCache: ```cluster-7-slave-03.sl.hackreduce.net:9098```
+* Geocoder: ```cluster-7-slave-09.sl.hackreduce.net:5874```
+* SpiderBunny: ```cluster-7-slave-10.sl.hackreduce.net:5656```
+* HCache: ```cluster-7-slave-08.sl.hackreduce.net:9098```
 
 ```scala
     import com.twitter.finagle._
     import com.hopper.spiderbunny._
 
-    val sb = Thrift.newIface[SpiderBunny.FutureIface]("cluster-7-slave-07.sl.hackreduce.net:5656```
+    val sb = Thrift.newIface[SpiderBunny.FutureIface]("cluster-7-slave-07.sl.hackreduce.net:5656")
 
     sb.fetch("http://www.hackreduce.org")
       .map { response =>

@@ -14,50 +14,37 @@ To deploy and demo your topology with production data, you can use the Hopper So
 ## Storm
 
 * http://cluster-7-master.sl.hackreduce.net:5698/ - Storm UI
-* cluster-7-master.sl.hackreduce.net:8745 - Nimbus thrift port
+* ```cluster-7-master.sl.hackreduce.net:8745``` - Nimbus thrift port
 
 ## Riak Nodes
 
 [Riak](http://basho.com/riak) is available on the following nodes on port:
 
-* cluster-7-slave-(00,02,03,06).sl.hackreduce.net:8098
+* ```cluster-7-slave-(04,05,06,07).sl.hackreduce.net:8098```
 
-## Redis Node
+## Redis
 
-[Redi](http://redis.io)s is available on its default port on :
+[Redis](http://redis.io/) is available on the following node:
 
-* cluster-7-slave-26.sl.hackreduce.net
+* ```cluster-7-slave-20.sl.hackreduce.net```
 
-## MySQL
+## ElasticSearch
 
-MySQL is available on cluster-7-slave-08.sl.hackreduce.net:3306
+[ElasticSearch](http://elasticsearch.org) is available on the following nodes:
 
-username: hackreduce
-
-password: codebigorgohome
-
-Please prefix your database name with your team's name.
+* ```cluster-7-slave-11.sl.hackreduce.net```
 
 ## Kafka
 
-use the [Storm Kafka Spout](https://github.com/nathanmarz/storm-contrib/tree/master/storm-kafka)
+Use the [Storm Kafka Spout](https://github.com/nathanmarz/storm-contrib/tree/master/storm-kafka)
 
 Zookeeper connect String to use kafka:
 
-```cluster-7-slave-04.sl.hackreduce.net:2181,cluster-7-slave-02.sl.hackreduce.net:2181,cluster-7-slave-01.sl.hackreduce.net:2181```
+```cluster-7-slave-01.sl.hackreduce.net:2181,cluster-7-slave-02.sl.hackreduce.net:2181,cluster-7-slave-03.sl.hackreduce.net:2181```
 
 ## Hopper Finagle Services
 
 Finagle services are described [here](/finagle/)
-
-## SSH
-
-You can SSH into any node using the following credentials: [hackreduce-0720.pem](hackreduce-0720.pem)
-
-And then:
-
-    chmod 600 hackreduce-0720.pem
-    ssh -i hackreduce-0720.pem hackreduce@<hostname>.sl.hackreduce.net
 
 ## Anything else
 
