@@ -15,6 +15,8 @@ We've sucked in the past 3 days worth of a random sampling of all public tweets 
 
 To use this dataset, take a look at the example topology [here](https://github.com/hackreduce/storm-hackathon/tree/master/src/main/java/org/hackreduce/storm/twitter).
 
+The data is raw JSON as described [here](https://dev.twitter.com/docs/platform-objects/tweets). You can use the classes provided by twitter4j (see example) to handle the data as Java classes or parse the JSON yourself if you need to.
+
 # Gnip
 
 [Gnip](http://gnip.com) is the world's largest and most trusted provider of social media data, serving customers in a range of industries. Gnip's customers deliver social media analytics to over 90% of the Fortune 500. Gnip delivers more than 100 billion realtime social data activities each month, providing access to data from dozens of sources including Twitter, Facebook, etc. 
