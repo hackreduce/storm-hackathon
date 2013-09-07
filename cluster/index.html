@@ -5,14 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hopper Storm Hackathon - Hopper Storm Hackathon</title>
+  <title>cluster - Hopper Storm Hackathon</title>
   <meta name="author" content="Hopper and Visible Measures">
 
   
-  <meta name="description" content="Hopper Storm Hackathon Jul 9th, 2013 Getting Started
-Datasets and APIs
-Cluster info
-Hopper&rsquo;s Finagle Services Sponsors Jul 9th, 2013 Tweet &hellip;">
+  <meta name="description" content="Cluster Jul 17th, 2013 To deploy and demo your topology with production data, you can use the Hopper SoftLayer storm cluster. Cluster info Storm &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +18,7 @@ Hopper&rsquo;s Finagle Services Sponsors Jul 9th, 2013 Tweet &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hackreduce.github.io/storm-hackathon/">
+  <link rel="canonical" href="http://hackreduce.github.io/storm-hackathon/cluster/">
   <link href="/storm-hackathon/favicon.png" rel="icon">
   <link href="/storm-hackathon/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
    <link href="/storm-hackathon/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -71,7 +68,7 @@ Hopper&rsquo;s Finagle Services Sponsors Jul 9th, 2013 Tweet &hellip;">
 <article role="article">
   
   <header>
-    <h1 class="entry-title">Hopper Storm Hackathon</h1>
+    <h1 class="entry-title">Cluster</h1>
     <p class="meta">
 
 
@@ -84,25 +81,63 @@ Hopper&rsquo;s Finagle Services Sponsors Jul 9th, 2013 Tweet &hellip;">
   
 
 
-<time datetime="2013-07-09T10:03:00-04:00" pubdate data-updated="true">Jul 9<span>th</span>, 2013</time></p>
+<time datetime="2013-07-17T09:14:00-04:00" pubdate data-updated="true">Jul 17<span>th</span>, 2013</time></p>
   </header>
   
-  <ul>
-<li><a href="/storm-hackathon/start/">Getting Started</a></li>
-<li><a href="/storm-hackathon/datasets/">Datasets and APIs</a></li>
-<li><a href="/storm-hackathon/cluster/">Cluster info</a></li>
-<li><a href="/storm-hackathon/finagle/">Hopper&rsquo;s Finagle Services</a></li>
+  <p>To deploy and demo your topology with production data, you can use the Hopper SoftLayer storm cluster.</p>
+
+<h1>Cluster info</h1>
+
+<h2>Storm</h2>
+
+<ul>
+<li><a href="http://cluster-7-master.sl.hackreduce.net:5698/">http://cluster-7-master.sl.hackreduce.net:5698/</a> &ndash; Storm UI</li>
+<li><code>cluster-7-master.sl.hackreduce.net:8745</code> &ndash; Nimbus thrift port</li>
 </ul>
 
 
-<h1>Sponsors</h1>
+<h2>Riak Nodes</h2>
 
-<p><img src="images/logos/hopper.png" width="300"></p>
+<p><a href="http://basho.com/riak">Riak</a> is available on the following nodes on port:</p>
 
-<p><img src="images/logos/softlayer.jpg" width="220">
-<img src="images/logos/gnip.png" width="120">
-<img src="images/logos/semantria.png" width="200">
-<img src="images/logos/diffbot_medium.jpg" width="200"></p>
+<ul>
+<li><code>cluster-7-slave-(04,05,06,07).sl.hackreduce.net:8098</code></li>
+</ul>
+
+
+<h2>Redis</h2>
+
+<p><a href="http://redis.io/">Redis</a> is available on the following node:</p>
+
+<ul>
+<li><code>cluster-7-slave-20.sl.hackreduce.net</code></li>
+</ul>
+
+
+<h2>ElasticSearch</h2>
+
+<p><a href="http://elasticsearch.org">ElasticSearch</a> is available on the following nodes:</p>
+
+<ul>
+<li><code>cluster-7-slave-(11,12,13,14,15).sl.hackreduce.net</code></li>
+</ul>
+
+
+<h2>Kafka</h2>
+
+<p>Use the <a href="https://github.com/nathanmarz/storm-contrib/tree/master/storm-kafka">Storm Kafka Spout</a></p>
+
+<p>Zookeeper connect String to use kafka:</p>
+
+<p><code>cluster-7-slave-01.sl.hackreduce.net:2181,cluster-7-slave-02.sl.hackreduce.net:2181,cluster-7-slave-03.sl.hackreduce.net:2181</code></p>
+
+<h2>Hopper Finagle Services</h2>
+
+<p>Finagle services are described <a href="/storm-hackathon/finagle/">here</a></p>
+
+<h2>Anything else</h2>
+
+<p>Is not available, but ask the Hopper guys and maybe it&rsquo;ll happen.</p>
 
   
     <footer>
@@ -120,13 +155,13 @@ Hopper&rsquo;s Finagle Services Sponsors Jul 9th, 2013 Tweet &hellip;">
   
 
 
-<time datetime="2013-07-09T10:03:00-04:00" pubdate data-updated="true">Jul 9<span>th</span>, 2013</time>
+<time datetime="2013-07-17T09:14:00-04:00" pubdate data-updated="true">Jul 17<span>th</span>, 2013</time>
         
       </p>
       
         <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hackreduce.github.io/storm-hackathon/index.html" data-via="" data-counturl="http://hackreduce.github.io/storm-hackathon/index.html" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hackreduce.github.io/storm-hackathon/cluster/index.html" data-via="" data-counturl="http://hackreduce.github.io/storm-hackathon/cluster/index.html" >Tweet</a>
   
   
   

@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Data sets and APIs - Hopper Storm Hackathon</title>
+  <meta name="author" content="Hopper and Visible Measures">
+
+  
+  <meta name="description" content="Data Sets and APIs Jul 9th, 2013 Though you are welcome to use any dataset you&rsquo;d like, we&rsquo;ve made it a bit easier to use a few. Twitter& &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hackreduce.github.io/storm-hackathon/datasets/">
+  <link href="/storm-hackathon/favicon.png" rel="icon">
+  <link href="/storm-hackathon/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+   <link href="/storm-hackathon/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <script src="/storm-hackathon/javascripts/modernizr-2.0.js"></script>
+  <script src="/storm-hackathon/javascripts/ender.js"></script>
+  <script src="/storm-hackathon/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/storm-hackathon/atom.xml" rel="alternate" title="Hopper Storm Hackathon" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/storm-hackathon/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hackreduce.github.io/storm-hackathon" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/storm-hackathon/">Home page</a></li>
+  <li><a href="/storm-hackathon/start">Getting Started</a></li>
+  <li><a href="/storm-hackathon/datasets">Datasets</a></li>
+  <li><a href="/storm-hackathon/cluster">Cluster</a></li>
+  <li><a href="/storm-hackathon/finagle">Finagle</a></li>
+</ul>
+
+</nav> 
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Data Sets and APIs</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-09T10:40:00-04:00" pubdate data-updated="true">Jul 9<span>th</span>, 2013</time></p>
+  </header>
+  
+  <p>Though you are welcome to use any dataset you&rsquo;d like, we&rsquo;ve made it a bit easier to use a few.</p>
+
+<h1>Twitter&rsquo;s Gardenhose</h1>
+
+<p>We&rsquo;ve sucked in the past 3 days worth of a random sampling of all public tweets which is approximately 4M tweets. This stream is still active, so it will suck in tweets as they happen during the hackathon.</p>
+
+<p>To use this dataset, take a look at the example topology <a href="https://github.com/hackreduce/storm-hackathon/tree/master/src/main/java/org/hackreduce/storm/twitter">here</a>.</p>
+
+<p>The data is raw JSON as described <a href="https://dev.twitter.com/docs/platform-objects/tweets">here</a>. You can use the classes provided by twitter4j (see example) to handle the data as Java classes or parse the JSON yourself if you need to.</p>
+
+<h1>Gnip</h1>
+
+<p><a href="http://gnip.com">Gnip</a> is the world&rsquo;s largest and most trusted provider of social media data, serving customers in a range of industries. Gnip&rsquo;s customers deliver social media analytics to over 90% of the Fortune 500. Gnip delivers more than 100 billion realtime social data activities each month, providing access to data from dozens of sources including Twitter, Facebook, etc.</p>
+
+<ul>
+<li>Gnip enterprise data collector supported sites
+
+<ul>
+<li>bitly</li>
+<li>Delicious</li>
+<li>Flickr</li>
+<li>Google+</li>
+<li>Instagram</li>
+<li>Reddit</li>
+<li>StackOverflow</li>
+<li>Vimeo</li>
+<li>Youtube</li>
+<li>etc.</li>
+</ul>
+</li>
+<li><a href="http://support.gnip.com/customer/portal/articles/499176-feed-info">Full list of feeds available</a></li>
+<li><a href="/storm-hackathon/gnip/">Details working with Gnip</a></li>
+<li><a href="https://github.com/hackreduce/storm-hackathon/tree/master/src/main/java/org/hackreduce/storm/gnip">Example Gnip Project</a></li>
+</ul>
+
+
+<h1>Semantria</h1>
+
+<p>Implement text/sentiment analysis into your project using <a href="semantria.com/register">Semantria&rsquo;s</a> REST API. Simply register at <a href="http://semantria.com/register">http://semantria.com/register</a> and let them know if you will be processing more than 10,000 documents.</p>
+
+<ul>
+<li>All hackers will have unlimited transactions during the Hackathon (1 transaction to process 1 document), and will receive a free 100k transactions after the Hackathon.</li>
+<li>For SDK’s &amp; additional information, check out the developer page at <a href="http://semantria.com/developer">http://semantria.com/developer</a></li>
+<li>For support please use our live chat on our website, our CTO/head developer will be answering all technical questions.</li>
+</ul>
+
+
+<h1>Static data sets</h1>
+
+<p>We preloaded 2 static datasets from our Map/Reduce hacktahons:</p>
+
+<ul>
+<li>Wikipedia: a wikipedia dump (XML format). See <a href="https://github.com/hackreduce/storm-hackathon/tree/master/src/main/java/org/hackreduce/storm/example/wikipedia">here</a> for an example</li>
+<li>NYSE: daily highs of companies traded on the NYSE between 1970 and 2010. See <a href="https://github.com/hackreduce/storm-hackathon/tree/master/src/main/java/org/hackreduce/storm/example/stock">here</a> for an example usage.</li>
+</ul>
+
+
+<p>Other static datasets are available and can be loaded on demand (ask one of the mentors):</p>
+
+<ul>
+<li><a href="https://github.com/hackreduce/Hackathon/tree/master/datasets">hack/reduce dataset collection</a></li>
+</ul>
+
+
+<h1>Real-time APIs</h1>
+
+<ul>
+<li><a href="http://blog.programmableweb.com/2012/04/17/62-real-time-apis-twitter-thrutu-and-pusher/">Real-time API Directory</a></li>
+</ul>
+
+
+<h1>Transit</h1>
+
+<ul>
+<li><a href="https://developers.google.com/transit/community">Google Transit</a></li>
+<li><a href="http://code.google.com/p/googletransitdatafeed/wiki/PublicFeeds">Google Transit Data Feeds</a></li>
+<li><a href="http://www.mbta.com/rider_tools/developers/default.asp?id=22393">MBTA</a></li>
+</ul>
+
+
+<h1>Financial</h1>
+
+<ul>
+<li><a href="http://finance.yahoo.com/news/rssindex/">Yahoo Finance Feeds</a></li>
+</ul>
+
+
+<h1>Miscellaneous</h1>
+
+<ul>
+<li><a href="http://www.craigslist.org/about/rss">Craigslist Data Feeds</a></li>
+<li><a href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/">USGS Earthquake Feed</a></li>
+</ul>
+
+
+  
+    <footer>
+      <p class="meta">
+        
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-09T10:40:00-04:00" pubdate data-updated="true">Jul 9<span>th</span>, 2013</time>
+        
+      </p>
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hackreduce.github.io/storm-hackathon/datasets/index.html" data-via="" data-counturl="http://hackreduce.github.io/storm-hackathon/datasets/index.html" >Tweet</a>
+  
+  
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <ul id="recent_posts">
+      <li class="post">
+      <a href="http://hackreduce.github.io/storm-hackathon" alt="Home"><img src="/storm-hackathon/images/Home.png"></a>
+      <a href="http://hackreduce.github.io/storm-hackathon/archives/" alt="Archives"><img src="/storm-hackathon/images/Calendar.png"></a>
+      
+      <a href="http://hackreduce.github.io/storm-hackathon/atom.xml" alt="subscribe feed"><img src="/storm-hackathon/images/rss.png"></a>
+      </li>
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/hackreduce">@hackreduce</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'hackreduce',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/storm-hackathon/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Hopper and Visible Measures -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
