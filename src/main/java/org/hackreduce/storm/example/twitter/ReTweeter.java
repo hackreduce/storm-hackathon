@@ -66,7 +66,7 @@ public class ReTweeter {
             "/kafkastorm", // Where to store state in ZK (don't change this)
             teamPrefix("retweet-logger") // Unique id of this spout. This needs to be unique across ALL topologies.
         );
-        spoutConfig.scheme = new SchemeAsMultiScheme(new TweetSheme()); // You can parse the tweets yourself if you prefer
+        spoutConfig.scheme = new SchemeAsMultiScheme(new TweetScheme()); // You can parse the tweets yourself if you prefer
 
         // This tells the spout to start at the very beginning of the data stream
         // If you just want to resume where you left off, remove this line

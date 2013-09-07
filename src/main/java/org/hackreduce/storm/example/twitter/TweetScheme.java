@@ -12,7 +12,7 @@ import backtype.storm.spout.Scheme;
 import backtype.storm.tuple.Fields;
 import backtype.storm.utils.Utils;
 
-public final class TweetSheme implements Scheme {
+public final class TweetScheme implements Scheme {
 
 	private static final long serialVersionUID = -4589383226205015147L;
 
