@@ -1,47 +1,47 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/archives/</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/archives/</loc>
         <lastmod>2013-09-07T09:13:05-04:00</lastmod>
     </url>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/blog/archives/</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/blog/archives/</loc>
         <lastmod>2013-09-07T09:13:05-04:00</lastmod>
     </url>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/cluster/hackreduce-0720.pem</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/cluster/hackreduce-0720.pem</loc>
         <lastmod>2013-09-07T09:13:05-04:00</lastmod>
     </url>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/cluster/</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/cluster/</loc>
         <lastmod>2013-09-07T09:14:44-04:00</lastmod>
     </url>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/datasets/</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/datasets/</loc>
+        <lastmod>2013-09-07T12:15:19-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://plaflamme.github.io/storm-hackathon/finagle/</loc>
         <lastmod>2013-09-07T09:13:05-04:00</lastmod>
     </url>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/finagle/</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/gnip/</loc>
         <lastmod>2013-09-07T09:13:05-04:00</lastmod>
     </url>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/gnip/</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/</loc>
         <lastmod>2013-09-07T09:13:05-04:00</lastmod>
     </url>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/</loc>
-        <lastmod>2013-09-07T09:13:05-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/</loc>
         <lastmod>2013-09-07T09:24:19-04:00</lastmod>
     </url>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/robots.txt</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/robots.txt</loc>
         <lastmod>2013-09-07T09:13:05-04:00</lastmod>
     </url>
     <url>
-        <loc>http://hackreduce.github.io/storm-hackathon/start/</loc>
+        <loc>http://plaflamme.github.io/storm-hackathon/start/</loc>
         <lastmod>2013-09-07T09:13:05-04:00</lastmod>
     </url>
 </urlset>

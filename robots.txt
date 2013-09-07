@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://hackreduce.github.io/storm-hackathon/sitemap.xml 
+Sitemap: http://plaflamme.github.io/storm-hackathon/sitemap.xml 
